@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+  <!-- На многих сайтах язык не указан. В принципе, это позволяет не вводить в заблуждение поисковик. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Система управления проектами</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!---
+    <style type="text/css">
+      body {
+        margin: 0;
+        background-color: #f4f6f8;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        font-weight: bold;
+        font-size: 20pt;
+        font-family: Helvetica;
+        font-style: normal;
+        text-align: center;
+        color: #1d4ed8;
+      }
+      h2 {
+        font-family: arial;
+        margin-right: 20pt;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #333333;
+      }
+      p,
+      table,
+      li {
+        font-family: "sans serif";
+      }
+      p {
+        line-height: 1;
+        color: black;
+      }
+
+      .description {
+        color: #8b008b;
+      }
+
+      .notification {
+        background-color: #fa8072;
+      }
+      #main-content {
+        max-width: 600px;
+      }
+      /* Оформление основного содержимого и боковой панели */
+      .page-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr; /*делит контейнер на 2 колонки в пропорции 2:1*/
+        gap: 24px;
+      }
+      .main-navigation a {
+        color: #191970;
+        text-decoration: none;
+      }
+      .main-navigation a:hover {
+        text-decoration: underline;
+      }
+      .main-navigation a:focus-visible {
+        outline: 2px solid #ba55d3;
+      }
+    </style> 
+    -->
+  </head>
+  <body>
+    <header>
+      <h1>Система управления проектами</h1>
+      <p>Планирование, распределение и контроль выполнения работ</p>
+    </header>
+    <nav class="main-navigation" aria-label="Основная навигация">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="#">Проекты</a></li>
+        <li><a href="#">Задачи</a></li>
+        <li><a href="#">Исполнители</a></li>
+      </ul>
+    </nav>
+    <main id="main-content">
+      <div class="page-content">
+        <article>
+          <header>
+            <h2>О системе</h2>
+          </header>
+          <p>
+            Веб-приложение предназначено для ведения проектов, управления
+            задачами, назначения исполнителей и контроля сроков выполнения
+            работ.
+          </p>
+          <section>
+            <h3>Управление проектами</h3>
+            <p>
+              Пользователь может создавать проекты, указывать их цели, сроки
+              реализации, текущий статус и состав рабочей команды.
+            </p>
+          </section>
+          <section>
+            <h3>Управление задачами</h3>
+            <p>
+              Для каждого проекта можно создавать задачи, назначать
+              исполнителей, устанавливать приоритеты и сроки выполнения.
+            </p>
+            <div class="task-card">
+              <h3>Задача: Разработка формы авторизации</h3>
+              <p>Исполнитель: Петров П.П.</p>
+              <p>Статус задачи: <span class="status-active">В работе</span></p>
+
+            </div>
+          </section>
+          <section>
+            <h3>Контроль результатов</h3>
+            <p>
+              Система позволяет отслеживать состояние задач, контролировать
+              соблюдение сроков и анализировать общую готовность проекта.
+            </p>
+          </section>
+          <footer>
+            <p>Дата обновления информации: 4 августа 2026 года.</p>
+          </footer>
+        </article>
+        <div>
+          <aside>
+            <h2>Уведомления</h2>
+            <p>Две задачи требуют проверки.</p>
+            <p>Срок выполнения одной задачи истекает сегодня.</p>
+          </aside>
+          <aside class="notification">
+            <p>Добавлена новая задача, требующая согласования..</p>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2026 Система управления проектами</p>
+    </footer>
+  </body>
+</html>
