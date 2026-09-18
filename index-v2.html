@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Система управления проектами</title>
+    <style>
+      /*обнуление внешнего отступа, единый шрифт; светлый фон страницы*/
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f6f8;
+      }
+      /*оформляет шапку: синий фон, белый текст, внутренние отступы*/
+      #header {
+        background: #2563eb;
+        color: white;
+        padding: 20px;
+      }
+      #header h1 {
+        margin: 0;
+      }
+      /*ul.nav, .nav li, ul.nav a - формируют горизонтальную навигационную панель на основе списка ссылок. Это соответствует одному из способов построения навигационной панели */
+      ul.nav {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: #e5e7eb;
+      }
+      .nav li {
+        display: inline;
+      }
+      ul.nav a {
+        display: inline-block;
+        width: 10em;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        color: #111827;
+        border-right: 1px solid #cbd5e1;
+      }
+      ul.nav a:hover {
+        background: #cbd5e1;
+      }
+      /* создаёт левую колонку с помощью float: left; */
+      #leftcol {
+        float: left;
+        width: 220px;
+        background: #dbeafe;
+        padding: 15px;
+      }
+      /* создаёт основную область, смещённую вправо за счёт margin-left. Такой приём соответствует способу построения двухколоночного макета, где левая колонка имеет фиксированную ширину, а правая занимает оставшееся пространство*/
+      #content {
+        margin-left: 250px;
+        padding: 20px;
+      }
+      /* Оформляет карточки проектов как отдельные белые блоки*/
+      .project-card {
+        background: white;
+        border: 1px solid #d1d5db;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      /* Свойство clear: both; отменяет действие обтекания, чтобы нижний колонтитул оказался под колонками, а не рядом с ними. 
+оки*/
+      #footer {
+        clear: both;
+        background: #e5e7eb;
+        text-align: center;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Система управления проектами</h1>
+      <p>Главная страница учебного веб-приложения</p>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="#">Проекты</a></li>
+        <li><a href="#">Мои задачи</a></li>
+        <li><a href="#">Пользователи</a></li>
+        <li><a href="#">Отчёты</a></li>
+        <li><a href="#">Настройки</a></li>
+      </ul>
+    </nav>
+
+    <div id="leftcol">
+      <h3>Быстрый доступ</h3>
+      <p><a href="#">Активные проекты</a></p>
+      <p><a href="#">Завершённые проекты</a></p>
+      <p><a href="#">Новые задачи</a></p>
+      <p><a href="#">Архив</a></p>
+    </div>
+
+    <div id="content">
+      <h2>Текущие проекты</h2>
+
+      <div class="project-card">
+        <h3>CRM-система для отдела продаж</h3>
+        <p>Контрагент: ООО «Ромашка»</p>
+        <p>Статус: Активен</p>
+        <p>Срок завершения: 30.11.2026</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Мобильное приложение для клиентов</h3>
+        <p>Контрагент: ИП Иванов</p>
+        <p>Статус: В работе</p>
+        <p>Срок завершения: 10.08.2026</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Интеграция с 1С</h3>
+        <p>Контрагент: ООО «ТехноСервис»</p>
+        <p>Статус: Завершён</p>
+        <p>Срок завершения: 15.03.2026</p>
+      </div>
+    </div>
+
+    <div id="footer">
+      © 2026 Учебное веб-приложение «Система управления проектами»
+    </div>
+  </body>
+</html>
