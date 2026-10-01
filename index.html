@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Система управления проектами</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
@@ -13,12 +13,12 @@
       <p>Планирование, распределение и контроль выполнения работ</p>
     </header>
     <nav class="main-navigation" aria-label="Основная навигация">
-      <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="#">Проекты</a></li>
-        <li><a href="#">Задачи</a></li>
-        <li><a href="#">Исполнители</a></li>
-      </ul>
+        <ul class="menu">
+          <li><a href="index.html" aria-current="page">Главная</a></li>
+          <li><a href="projects.html">Проекты</a></li>
+          <li><a href="tasks.html">Задачи</a></li>
+          <li><a href="users.html">Исполнители</a></li>
+        </ul>
     </nav>
     <main id="main-content">
       <div class="page-content">
@@ -48,7 +48,6 @@
               <h3>Задача: Разработка формы авторизации</h3>
               <p>Исполнитель: Петров П.П.</p>
               <p>Статус задачи: <span class="status-active">В работе</span></p>
-
             </div>
           </section>
           <section>
@@ -73,6 +72,16 @@
           </aside>
         </div>
       </div>
+      <section>
+        <h3>Функции системы</h3>
+        <ul>
+          <li>создание проектов;</li>
+          <li>добавление задач;</li>
+          <li>назначение исполнителей;</li>
+          <li>изменение статусов задач;</li>
+          <li>формирование отчётов.</li>
+        </ul>
+      </section>
     </main>
     <footer>
       <p>&copy; 2026 Система управления проектами</p>

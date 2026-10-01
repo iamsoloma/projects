@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f6f8;
+  color: #1f2937;
+}
+.page-header {
+  background-color: #ffffff;
+  padding: 20px;
+  border-bottom: 1px solid #d1d5db;
+}
+.page-header h1 {
+  text-align: center;
+  color: #222222;
+  margin-bottom: 20px;
+}
+.menu {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.menu li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.menu a {
+  display: block;
+  padding: 8px 14px;
+  text-decoration: none;
+  background-color: #222222;
+  color: white;
+  border-radius: 4px;
+}
+.menu a:hover {
+  background-color: #1d4ed8;
+}
+.content-section {
+  width: 80%;
+  margin: 30px auto;
+}
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.status-active {
+  color: #16a34a;
+  font-weight: bold;
+}
+.status-warning {
+  color: #dc2626;
+  font-weight: bold;
+}
+.status-complete {
+  color: #6b7280;
+  font-weight: bold;
+}
+.page-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #d1d5db;
+}
+.project-detail-page .page-header {
+  padding: 26px 6px 6px;
+}
+.project-detail-page .page-header h1 {
+  color: #2563eb;
+  margin: 0 0 14px;
+  font-size: 34px;
+}
+.project-detail-page .page-subtitle {
+  margin: 0 0 36px;
+  text-align: center;
+}
+.project-detail-page .menu a {
+  background-color: #2563eb;
+}
+.project-detail-page .menu a:hover {
+  background-color: #1d4ed8;
+}
+.project-detail-content {
+  width: auto;
+  margin: 0;
+  padding: 30px 14px;
+}
+.project-detail-content .project-card {
+  padding: 24px 20px;
+}
+.project-detail-content h2 {
+  margin-top: 14px;
+}
+.project-detail-content h3 {
+  margin-bottom: 18px;
+}
+.project-detail-content hr {
+  height: 3px;
+  border: 0;
+  background-color: #e5e7eb;
+  margin: 25px 0;
+}
+.project-detail-content p {
+  line-height: 1.5;
+}
+.project-detail-content li {
+  margin: 6px 0;
+}
+.project-detail-content .status-active {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background-color: #16a34a;
+  color: #ffffff;
+}
+.project-detail-content .deadline {
+  color: #ef4444;
+  text-decoration: underline;
+}
+.project-detail-content .additional-info {
+  padding: 24px 20px;
+}
+.project-detail-content .additional-info h2 {
+  font-size: 20px;
+}
