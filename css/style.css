@@ -48,3 +48,51 @@ hr {
   background-color: #e5e7eb;
   margin: 25px 0;
 }
+
+.project-form {
+  width: 700px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 24px;
+}
+.project-form h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #111827;
+}
+.form-group {
+  margin-bottom: 18px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #374151;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.form-actions {
+  margin-top: 20px;
+}
+.form-actions button {
+  padding: 10px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+.form-actions button[type="reset"] {
+  background-color: #6b7280;
+}

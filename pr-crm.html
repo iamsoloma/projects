@@ -1,61 +1,98 @@
 <!doctype html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Карточка проекта | Система управления проектами</title>
-		<link rel="stylesheet" href="css/style-v2.css" />
-	</head>
-	<body class="project-detail-page">
-		<header class="page-header">
-			<h1>Система управления проектами</h1>
-			<p class="page-subtitle">Карточка выбранного проекта</p>
-			<nav aria-label="Основная навигация">
-				<ul class="menu">
-					<li><a href="projects.html">Проекты</a></li>
-					<li><a href="tasks.html">Мои задачи</a></li>
-					<li><a href="users.html">Команда</a></li>
-					<li><a href="#reports">Отчёты</a></li>
-				</ul>
-			</nav>
-		</header>
-		<main class="content-section project-detail-content">
-			<article class="project-card">
-				<h2>Проект: CRM-система для отдела продаж</h2>
-				<section>
-					<h3>Общая информация</h3>
-					<p>
-						Проект предназначен для автоматизации работы менеджеров по продажам,
-						хранения клиентской базы, контроля воронки продаж и формирования
-						аналитических отчётов.
-					</p>
-				</section>
-				<hr />
-				<section>
-					<h3>Основные параметры</h3>
-					<p>Контрагент: ООО «Ромашка»</p>
-					<p>Руководитель проекта: Иванов И.И.</p>
-					<p>Статус: <span class="status-active">Активен</span></p>
-					<p>Срок выполнения: <span class="deadline">01.03.2026 – 30.11.2026</span></p>
-				</section>
-				<hr />
-				<section>
-					<h3>Список задач</h3>
-					<ul>
-						<li>Анализ требований заказчика</li>
-						<li>Проектирование структуры базы данных</li>
-						<li>Разработка интерфейса страницы проектов</li>
-						<li>Создание формы добавления задачи</li>
-					</ul>
-					<p>Последнее изменение карточки проекта: 20.04.2026</p>
-				</section>
-			</article>
-			<section class="project-card additional-info" aria-labelledby="additional-info-title">
-				<h2 id="additional-info-title">Дополнительная информация</h2>
-				<p>Открытых задач: 4</p>
-				<p>Исполнителей в проекте: 3</p>
-				<p>Документов прикреплено: 7</p>
-			</section>
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Карточка проекта | Система управления проектами</title>
+    <link rel="stylesheet" href="css/style-v2.css" />
+  </head>
+  <body class="project-detail-page">
+    <header class="page-header">
+      <h1>Система управления проектами</h1>
+      <p class="page-subtitle">Карточка выбранного проекта</p>
+      <nav aria-label="Основная навигация">
+        <ul class="menu">
+          <li><a href="projects.html">Проекты</a></li>
+          <li><a href="tasks.html">Мои задачи</a></li>
+          <li><a href="users.html">Команда</a></li>
+          <li><a href="#reports">Отчёты</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="content-section">
+      <article class="project-card">
+        <h2>Проект: CRM-система для отдела продаж</h2>
+        <section>
+          <h3>Общая информация</h3>
+          <p>
+            Проект предназначен для автоматизации работы менеджеров по продажам,
+            хранения клиентской базы, контроля воронки продаж и формирования
+            аналитических отчётов.
+          </p>
+        </section>
+        <hr />
+        <section>
+          <h3>Основные параметры</h3>
+          <p>Контрагент: ООО «Ромашка»</p>
+          <p>Руководитель проекта: Иванов И.И.</p>
+          <p>Статус: <span class="status-active">Активен</span></p>
+          <p>
+            Срок выполнения:
+            <span class="deadline">01.03.2026 – 30.11.2026</span>
+          </p>
+        </section>
+        <hr />
+        <section>
+          <h3>Список задач</h3>
+          <ul>
+            <li>Анализ требований заказчика</li>
+            <li>Проектирование структуры базы данных</li>
+            <li>Разработка интерфейса страницы проектов</li>
+            <li>Создание формы добавления задачи</li>
+          </ul>
+        </section>
+        <p>Последнее изменение карточки проекта: 20.04.2026</p>
+
+        <table class="projects-table">
+          <tr>
+            <th>Задача</th>
+            <th>Исполнитель</th>
+            <th>Приоритет</th>
+            <th>Статус</th>
+            <th>Срок</th>
+          </tr>
+          <tr>
+            <td>Разработка макета страницы проектов</td>
+            <td>Петров П.П.</td>
+            <td>Высокий</td>
+            <td>В работе</td>
+            <td>15.05.2026</td>
+          </tr>
+          <tr>
+            <td>Создание формы добавления задачи</td>
+            <td>Иванов А.А.</td>
+            <td>Средний</td>
+            <td>В работе</td>
+            <td>18.05.2026</td>
+          </tr>
+          <tr>
+            <td>Настройка ролей пользователей</td>
+            <td>Сидоров С.С.</td>
+            <td>Критический</td>
+            <td>На проверке</td>
+            <td>20.05.2026</td>
+          </tr>
+        </table>
+      </article>
+      <section
+        class="project-card additional-info"
+        aria-labelledby="additional-info-title"
+      >
+        <h2 id="additional-info-title">Дополнительная информация</h2>
+        <p>Открытых задач: 4</p>
+        <p>Исполнителей в проекте: 3</p>
+        <p>Документов прикреплено: 7</p>
+      </section>
+    </main>
+  </body>
 </html>

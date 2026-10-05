@@ -39,6 +39,7 @@ body {
 .content-section {
   width: 80%;
   margin: 30px auto;
+  padding: 30px 14px;
 }
 .project-card {
   background-color: #ffffff;
@@ -83,11 +84,7 @@ body {
 .project-detail-page .menu a:hover {
   background-color: #1d4ed8;
 }
-.project-detail-content {
-  width: auto;
-  margin: 0;
-  padding: 30px 14px;
-}
+
 .project-detail-content .project-card {
   padding: 24px 20px;
 }
@@ -125,4 +122,24 @@ body {
 }
 .project-detail-content .additional-info h2 {
   font-size: 20px;
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  margin-top: 20px;
+}
+.projects-table th,
+.projects-table td {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  text-align: left;
+}
+.projects-table th {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+.projects-table tr:nth-child(even) {
+  background-color: #f9fafb;
 }
