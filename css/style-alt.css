@@ -1,0 +1,301 @@
+/* Второй вариант интерфейса (практическое задание 16).
+   Общий стиль для index-alt.html, projects-alt.html, project-card-alt.html */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.page-wrapper {
+  --nav-height: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f5f6f8;
+}
+
+
+.page-header {
+  background: #2563eb;
+  color: #ffffff;
+  padding: 20px;
+}
+.page-header h1 {
+  margin: 0 0 16px;
+}
+.page-header p {
+  margin: 0;
+}
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #e5e7eb;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav a {
+  display: block;
+  width: 10em;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #111827;
+  border-right: 1px solid #cbd5e1;
+}
+.nav a:hover,
+.nav a[aria-current="page"] {
+  background: #cbd5e1;
+}
+
+.page-content {
+  display: flex;
+  align-items: flex-start;
+}
+.sidebar {
+  flex: 0 0 260px; 
+  background: #dbeafe;
+  padding: 15px;
+}
+.sidebar h3 {
+  margin: 0 0 16px;
+}
+.sidebar p {
+  margin: 0 0 12px;
+}
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+}
+.content h2 {
+  margin-top: 16px;
+}
+
+
+.project-card,
+.info-block {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.project-card h3,
+.info-block h3 {
+  margin: 8px 0 16px;
+}
+.project-card p,
+.info-block p {
+  margin: 0 0 12px;
+}
+
+.task-item {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.task-item p {
+  margin: 0 0 12px;
+}
+.task-item p:last-child {
+  margin-bottom: 0;
+}
+
+.more-link {
+  margin: 0 0 15px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.projects-grid .project-card {
+  margin-bottom: 0; 
+}
+.projects-grid .project-card h3 {
+  padding-right: 90px; 
+}
+
+/* Практическое задание 15: значок статуса в правом верхнем углу карточки */
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #ffffff;
+  background: #6b7280;
+}
+.badge-active {
+  background: #16a34a;
+}
+.badge-progress {
+  background: #2563eb;
+}
+.badge-done {
+  background: #6b7280;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #1d4ed8;
+}
+.btn-secondary {
+  background: #6b7280;
+}
+.btn-secondary:hover {
+  background: #4b5563;
+}
+
+/* Практическое задание 15: модальное окно «Создание проекта».
+   Открывается переходом на #create-project (псевдокласс :target), закрывается ссылкой #close.
+   Подложка (fixed, z-index 100) закрывает всё окно браузера,
+   окно (fixed, z-index 101) расположено над ней. */
+.modal {
+  display: none;
+}
+.modal:target {
+  display: block;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(17, 24, 39, 0.55);
+}
+.modal-window {
+  position: fixed;
+  z-index: 101;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 32px);
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+}
+.modal-window h2 {
+  margin: 0 0 20px;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #374151;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Самостоятельная работа 5: трёхколоночная карточка проекта */
+.project-layout {
+  display: flex;
+  flex-wrap: wrap; /* при нехватке места колонки переносятся на следующую строку */
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.section-nav {
+  flex: 0 0 200px;
+  background: #dbeafe;
+  padding: 15px;
+}
+.section-nav h3 {
+  margin: 0 0 16px;
+}
+.section-nav p {
+  margin: 0 0 12px;
+}
+
+.page-content {
+  display: flex;
+  flex-wrap: wrap; /* когда места мало, основная область переносится под боковую колонку */
+  align-items: flex-start;
+}
+.content {
+  flex: 1 1 400px; /* занимает остальное место, но не уже 400px, иначе переносится вниз */
+  min-width: 0;
+  padding: 20px;
+}
+
+.project-main {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+.project-main h2 {
+  margin: 0 0 16px;
+}
+.project-aside {
+  flex: 0 0 280px;
+  position: sticky;
+  top: calc(var(--nav-height) + 16px); /* ниже закреплённой навигации */
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 15px;
+}
+.project-aside h3 {
+  margin: 0 0 16px;
+}
+.project-aside p {
+  margin: 0 0 12px;
+}
+.project-aside p:last-child {
+  margin-bottom: 0;
+}
+
+
+.project-main section {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.page-footer {
+  background: #e5e7eb;
+  text-align: center;
+  padding: 15px;
+}
+.page-footer p {
+  margin: 0;
+}

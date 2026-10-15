@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Система управления проектами</title>
+    <link rel="stylesheet" href="css/style-alt.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="page-header">
+        <h1>Система управления проектами</h1>
+        <p>Главная страница учебного веб-приложения</p>
+      </header>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul class="nav">
+          <li><a href="index-alt.html" aria-current="page">Главная</a></li>
+          <li><a href="projects-alt.html">Проекты</a></li>
+          <li><a href="#">Мои задачи</a></li>
+          <li><a href="#">Пользователи</a></li>
+          <li><a href="#">Отчёты</a></li>
+        </ul>
+      </nav>
+
+      <div class="page-content">
+        <aside class="sidebar">
+          <h3>Фильтры</h3>
+          <p><a href="projects-alt.html">Активные проекты</a></p>
+          <p><a href="projects-alt.html">Завершённые проекты</a></p>
+          <p><a href="#">Новые задачи</a></p>
+          <p><a href="#">Архив</a></p>
+          <p><a href="#create-project" class="btn">Создать проект</a></p>
+        </aside>
+
+        <main class="content">
+          <h2>Текущие проекты</h2>
+
+          <div class="projects-grid">
+            <div class="project-card">
+              <span class="badge badge-active">Активен</span>
+              <h3>CRM-система для отдела продаж</h3>
+              <p>Контрагент: ООО «Ромашка»</p>
+              <p>Срок завершения: 30.11.2026</p>
+              <p><a href="project-card-alt.html">Открыть проект</a></p>
+            </div>
+
+            <div class="project-card">
+              <span class="badge badge-progress">В работе</span>
+              <h3>Мобильное приложение для клиентов</h3>
+              <p>Контрагент: ИП Иванов</p>
+              <p>Срок завершения: 10.08.2026</p>
+              <p><a href="project-card-alt.html">Открыть проект</a></p>
+            </div>
+
+            <div class="project-card">
+              <span class="badge badge-done">Завершён</span>
+              <h3>Интеграция с 1С</h3>
+              <p>Контрагент: ООО «ТехноСервис»</p>
+              <p>Срок завершения: 15.03.2026</p>
+              <p><a href="project-card-alt.html">Открыть проект</a></p>
+            </div>
+          </div>
+
+          <p class="more-link">
+            <a href="projects-alt.html">Перейти к списку проектов →</a>
+          </p>
+        </main>
+      </div>
+
+      <footer class="page-footer">
+        <p>© 2026 Учебное веб-приложение «Система управления проектами»</p>
+      </footer>
+    </div>
+
+    <!-- Модальное окно «Создание проекта» (практическое задание 15) -->
+    <div class="modal" id="create-project">
+      <a class="modal-overlay" href="#close" aria-label="Закрыть окно"></a>
+      <div
+        class="modal-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <h2 id="modal-title">Создание проекта</h2>
+        <form>
+          <div class="form-group">
+            <label for="project-name">Название проекта</label>
+            <input
+              type="text"
+              id="project-name"
+              name="project-name"
+              placeholder="Введите название проекта"
+            />
+          </div>
+          <div class="form-group">
+            <label for="project-description">Описание проекта</label>
+            <textarea
+              id="project-description"
+              name="project-description"
+              rows="4"
+              placeholder="Введите описание проекта"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="project-client">Контрагент</label>
+            <input
+              type="text"
+              id="project-client"
+              name="project-client"
+              placeholder="Введите название организации"
+            />
+          </div>
+          <div class="form-group">
+            <label for="project-deadline">Срок завершения</label>
+            <input type="date" id="project-deadline" name="project-deadline" />
+          </div>
+          <div class="form-group">
+            <label for="project-status">Статус проекта</label>
+            <select id="project-status" name="project-status">
+              <option>Новый</option>
+              <option>Активен</option>
+              <option>Приостановлен</option>
+              <option>Завершён</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn">Сохранить</button>
+            <a href="#close" class="btn btn-secondary">Отмена</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
