@@ -63,9 +63,26 @@
             <p>Срок завершения: 15.03.2026</p>
             <p><a href="project-card-alt.html">Открыть проект</a></p>
           </div>
+
           <section class="output-panel">
             <h3>Панель вывода</h3>
             <div id="output"></div>
+          </section>
+
+          <section class="projects-section">
+            <h3>Проекты</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Проект</th>
+                  <th scope="col">Заказчик</th>
+                  <th scope="col">Состояние</th>
+                  <th scope="col">Срок</th>
+                  <th scope="col">Готовность</th>
+                </tr>
+              </thead>
+              <tbody id="projects-body"></tbody>
+            </table>
           </section>
         </main>
       </div>
@@ -134,6 +151,8 @@
       </div>
     </div>
 
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

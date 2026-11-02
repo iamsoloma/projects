@@ -339,6 +339,31 @@ body {
   font-weight: bold;
 }
 
+.projects-section {
+  margin-top: 24px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+.data-table th,
+.data-table td {
+  border: 1px solid #d1d5db;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+.data-table thead th {
+  background: #eef2f7;
+}
+.data-table td small {
+  color: #6b7280;
+}
+.data-table .badge {
+  position: static;
+}
+
 .page-footer {
   background: #e5e7eb;
   text-align: center;
