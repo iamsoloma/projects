@@ -81,6 +81,18 @@ body {
   margin-top: 16px;
 }
 
+.summary {
+  grid-column: 1 / -1; /* блок занимает обе колонки сетки */
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 24px;
+}
+.summary h3 {
+  margin-top: 0;
+}
+
 .project-card,
 .info-block {
   position: relative;
@@ -109,6 +121,14 @@ body {
 }
 .task-item p:last-child {
   margin-bottom: 0;
+}
+
+.task-list .badge {
+  position: static;
+}
+
+.task--overdue {
+  border-color: #dc2626;
 }
 
 .more-link {
@@ -146,6 +166,12 @@ body {
 }
 .badge-done {
   background: #6b7280;
+}
+
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: #6b7280;
 }
 
 .btn {

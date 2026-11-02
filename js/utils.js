@@ -1,4 +1,9 @@
 function show(text) {
+  output = document.querySelector("#output")
+  if (!output) {
+    console.log("На странице нет вывода!")
+    return;
+  }
   document.querySelector("#output").innerHTML += "<p>" + text + "</p>";
 }
 

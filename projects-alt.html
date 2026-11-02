@@ -40,29 +40,21 @@
             состояние и переходить к подробному описанию.
           </p>
 
-          <div class="project-card">
-            <h3>CRM-система для отдела продаж</h3>
-            <p>Контрагент: ООО «Ромашка»</p>
-            <p>Статус: Активен</p>
-            <p>Срок завершения: 30.11.2026</p>
-            <p><a href="project-card-alt.html">Открыть проект</a></p>
+          <div class="toolbar">
+            <input
+              type="search"
+              id="search"
+              placeholder="Поиск по названию проекта"
+            />
+            <select id="status-filter">
+              <option value="all">Все статусы</option>
+              <option value="new">Новые</option>
+              <option value="in-progress">В работе</option>
+              <option value="done">Завершённые</option>
+            </select>
           </div>
 
-          <div class="project-card">
-            <h3>Мобильное приложение для клиентов</h3>
-            <p>Контрагент: ИП Иванов</p>
-            <p>Статус: В работе</p>
-            <p>Срок завершения: 10.08.2026</p>
-            <p><a href="project-card-alt.html">Открыть проект</a></p>
-          </div>
-
-          <div class="project-card">
-            <h3>Интеграция с 1С</h3>
-            <p>Контрагент: ООО «ТехноСервис»</p>
-            <p>Статус: Завершён</p>
-            <p>Срок завершения: 15.03.2026</p>
-            <p><a href="project-card-alt.html">Открыть проект</a></p>
-          </div>
+          <section id="project-list" class="project-list"></section>
 
           <section class="output-panel">
             <h3>Панель вывода</h3>
