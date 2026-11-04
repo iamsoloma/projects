@@ -26,13 +26,14 @@
       <div class="page-content">
         <aside class="sidebar">
           <h3>Быстрый доступ</h3>
-          <p><a href="projects-alt.html">Активные проекты</a></p>
-          <p><a href="projects-alt.html">Завершённые проекты</a></p>
-          <p><a href="projects-alt.html">Проекты в архиве</a></p>
-          <p><a href="#create-project">Создать проект</a></p>
+          <p><a href="projects-alt.html?status=in-progress">Проекты в работе</a></p>
+          <p><a href="projects-alt.html?status=done">Завершённые проекты</a></p>
+          <p><a href="projects-alt.html">Все проекты</a></p>
+          <p><a href="#open-modal">Создать проект</a></p>
         </aside>
 
         <main class="content">
+          <div id="app-error" class="errors hidden" role="alert"></div>
           <h2>Список проектов</h2>
           <p>
             В данном разделе представлены проекты, зарегистрированные в системе.
@@ -40,26 +41,118 @@
             состояние и переходить к подробному описанию.
           </p>
 
+          <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal__backdrop" aria-hidden="true"></div>
+            <div class="modal__window">
+              <button
+                id="close-modal"
+                class="modal__close"
+                aria-label="Закрыть"
+              >
+                &times;
+              </button>
+              <div id="form-errors" class="errors hidden" role="alert"></div>
+
+              <h2 id="modal-title">Создание проекта</h2>
+              <form id="project-form" class="form" novalidate>
+                <div class="form-group">
+                  <label for="project-name">Название проекта</label>
+                  <input
+                    type="text"
+                    id="project-name"
+                    name="project-name"
+                    placeholder="Введите название проекта"
+                    required
+                    minlength="3"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="project-client">Заказчик</label>
+                  <input
+                    type="text"
+                    id="project-client"
+                    name="project-client"
+                    placeholder="Введите название организации"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="project-manager">Руководитель</label>
+                  <input
+                    type="text"
+                    id="project-manager"
+                    name="project-manager"
+                    placeholder="Введите ФИО сотрудника"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="project-start-date">Дата начала</label>
+                  <input
+                    type="date"
+                    id="project-start-date"
+                    name="project-start-date"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="project-end-date">Срок завершения</label>
+                  <input
+                    type="date"
+                    id="project-end-date"
+                    name="project-end-date"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="project-status">Статус проекта</label>
+                  <select id="project-status" name="project-status">
+                    <option value="new">Новый</option>
+                    <option value="in-progress">Активен</option>
+                    <option value="done">Завершён</option>
+                  </select>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn">Сохранить</button>
+                  <button type="button" id="cancel-modal" class="btn btn-secondary">
+                    Отмена
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
           <div class="toolbar">
             <input
               type="search"
               id="search"
               placeholder="Поиск по названию проекта"
             />
-            <select id="status-filter">
-              <option value="all">Все статусы</option>
-              <option value="new">Новые</option>
-              <option value="in-progress">В работе</option>
-              <option value="done">Завершённые</option>
-            </select>
+            <div class="toolbar__group">
+              <label for="status-filter">Статус</label>
+              <select id="status-filter">
+                <option value="all">Все статусы</option>
+                <option value="new">Новые</option>
+                <option value="in-progress">В работе</option>
+                <option value="done">Завершённые</option>
+              </select>
+            </div>
+            <div class="toolbar__group">
+              <label for="sort-filter">Сортировка</label>
+              <select id="sort-filter">
+                <option value="deadline">По сроку</option>
+                <option value="title">По названию</option>
+                <option value="progress">По готовности</option>
+              </select>
+            </div>
+            <button type="button" id="reset-filter" class="btn btn-secondary">Сбросить фильтры</button>
+          </div>
+
+          <div class="project-actions">
+            <button id="reset-data" class="btn btn-secondary">Сбросить данные</button>
+            <button id="open-modal" class="btn">Создать проект</button>
           </div>
 
           <section id="project-list" class="project-list"></section>
-
-          <section class="output-panel">
-            <h3>Панель вывода</h3>
-            <div id="output"></div>
-          </section>
 
           <section class="projects-section">
             <h3>Проекты</h3>
@@ -84,66 +177,7 @@
       </footer>
     </div>
 
-    <!-- Модальное окно «Создание проекта» (практическое задание 15) -->
-    <div class="modal" id="create-project">
-      <a class="modal-overlay" href="#close" aria-label="Закрыть окно"></a>
-      <div
-        class="modal-window"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
-        <h2 id="modal-title">Создание проекта</h2>
-        <form>
-          <div class="form-group">
-            <label for="project-name">Название проекта</label>
-            <input
-              type="text"
-              id="project-name"
-              name="project-name"
-              placeholder="Введите название проекта"
-            />
-          </div>
-          <div class="form-group">
-            <label for="project-description">Описание проекта</label>
-            <textarea
-              id="project-description"
-              name="project-description"
-              rows="4"
-              placeholder="Введите описание проекта"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="project-client">Контрагент</label>
-            <input
-              type="text"
-              id="project-client"
-              name="project-client"
-              placeholder="Введите название организации"
-            />
-          </div>
-          <div class="form-group">
-            <label for="project-deadline">Срок завершения</label>
-            <input type="date" id="project-deadline" name="project-deadline" />
-          </div>
-          <div class="form-group">
-            <label for="project-status">Статус проекта</label>
-            <select id="project-status" name="project-status">
-              <option>Новый</option>
-              <option>Активен</option>
-              <option>Приостановлен</option>
-              <option>Завершён</option>
-            </select>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn">Сохранить</button>
-            <a href="#close" class="btn btn-secondary">Отмена</a>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
   </body>

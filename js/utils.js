@@ -1,60 +1,56 @@
-function show(text) {
-  output = document.querySelector("#output")
-  if (!output) {
-    console.log("На странице нет вывода!")
-    return;
-  }
-  document.querySelector("#output").innerHTML += "<p>" + text + "</p>";
-}
-
 function getStatusLabel(status) {
-  if (status === "new") {
-    return "Новая";
-  } else if (status === "in-progress") {
-    return "В работе";
-  } else if (status === "done") {
-    return "Завершена";
-  } else {
-    return "Статус не определён";
-  }
+  const labels = {
+    new: "Новая",
+    "in-progress": "В работе",
+    done: "Завершена",
+  };
+  return labels[status] || "Статус не определён";
 }
 
 function getStatusClass(status) {
-  return "badge badge--" + status;
+  return `badge badge--${status}`;
 }
 
-function getProgress(done, total) {
+function getProgress(completed, total) {
   if (total === 0) return 0;
-  return Math.round((done / total) * 100);
+  return Math.round((completed / total) * 100);
 }
 
 function isOverdue(deadline, status) {
-  if (status === "done") return false;
-  return new Date(deadline) < new Date();
+  if (!deadline || status === "done") return false;
+  const deadlineDate = new Date(`${deadline}T23:59:59`);
+  return !Number.isNaN(deadlineDate.getTime()) && deadlineDate < new Date();
 }
 
 function formatDate(dateString) {
-  const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  
-  return `${day}.${month}.${date.getFullYear()}`;
+  if (!dateString) return "Не указана";
+  const date = new Date(`${dateString}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return "Некорректная дата";
+  return new Intl.DateTimeFormat("ru-RU").format(date);
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => {
+    const replacements = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return replacements[character];
+  });
 }
 
 function statusBadge(status) {
-  return (
-    "<span class='" +
-    getStatusClass(status) +
-    "'>" +
-    getStatusLabel(status) +
-    "</span>"
-  );
+  return `<span class="${getStatusClass(status)}">${escapeHtml(getStatusLabel(status))}</span>`;
 }
 
-function progressBar(done, total) {
-  return (
-    "<div class='progress'><div class='progress__bar' style='width: " +
-    getProgress(done, total) +
-    "%'></div></div>"
-  );
+function progressBar(completed, total) {
+  const progress = getProgress(completed, total);
+  return `
+    <div class="progress" role="progressbar" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress__bar" style="width: ${progress}%"></div>
+    </div>
+  `;
 }

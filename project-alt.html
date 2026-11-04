@@ -27,41 +27,58 @@
         <!-- Левая колонка: навигация по разделам карточки -->
         <nav class="section-nav" aria-label="Разделы карточки проекта">
           <h3>Разделы</h3>
-          <p><a href="#description">Описание</a></p>
+          <p><a href="#project-details">Сведения о проекте</a></p>
           <p><a href="#tasks">Список задач</a></p>
-          <p><a href="project-card-alt.html">Краткая карточка</a></p>
           <p><a href="projects-alt.html">К списку проектов</a></p>
         </nav>
 
         <!-- Центральная колонка: описание и список задач -->
         <main class="project-main">
-          <h2>CRM-система для отдела продаж</h2>
-
-          <section class="info-block" id="description">
-            <h3>Описание проекта</h3>
-            <p>
-              Проект направлен на разработку CRM-системы для автоматизации
-              работы отдела продаж. Система должна обеспечивать ведение
-              клиентской базы, контроль сделок, управление задачами сотрудников
-              и формирование аналитических отчётов.
-            </p>
-          </section>
+          <div id="app-error" class="errors hidden" role="alert"></div>
+          <h2 id="project-title">Загрузка проекта...</h2>
 
           <section class="info-block" id="tasks">
-            <h3>Задачи проекта</h3>
+            <div class="section-heading">
+              <h3>Задачи проекта</h3>
+              <button type="button" id="open-task-modal" class="btn">Добавить задачу</button>
+            </div>
+            <section id="task-list" class="task-list" aria-live="polite"></section>
 
-            <section id="task-list" class="task-list"></section>
+            <div id="task-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
+              <div class="modal__backdrop" aria-hidden="true"></div>
+              <div class="modal__window">
+                <button type="button" id="close-task-modal" class="modal__close" aria-label="Закрыть">
+                  &times;
+                </button>
+                <h2 id="task-modal-title">Создание задачи</h2>
+                <div id="task-form-errors" class="errors hidden" role="alert"></div>
+                <form id="task-form" class="form" novalidate>
+                <div class="form-group">
+                  <label for="task-title">Название задачи</label>
+                  <input id="task-title" name="task-title" type="text" required />
+                </div>
+                <div class="form-group">
+                  <label for="task-assignee">Исполнитель</label>
+                  <input id="task-assignee" name="task-assignee" type="text" />
+                </div>
+                <div class="form-group">
+                  <label for="task-deadline">Срок выполнения</label>
+                  <input id="task-deadline" name="task-deadline" type="date" required />
+                </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn">Сохранить</button>
+                    <button type="button" id="cancel-task-modal" class="btn btn-secondary">Отмена</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </section>
         </main>
 
         <!-- Правая колонка: сведения о проекте, закреплена (position: sticky) -->
         <aside class="project-aside" aria-labelledby="aside-title">
           <h3 id="aside-title">Сведения о проекте</h3>
-          <p><strong>Заказчик:</strong> ООО «Ромашка»</p>
-          <p><strong>Руководитель:</strong> Иванов И.И.</p>
-          <p><strong>Дата начала:</strong> 01.03.2026</p>
-          <p><strong>Срок завершения:</strong> 30.11.2026</p>
-          <p><strong>Статус:</strong> Активен</p>
+          <div id="project-details"></div>
         </aside>
       </div>
 
@@ -70,7 +87,7 @@
       </footer>
     </div>
 
-    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
   </body>
