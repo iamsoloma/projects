@@ -1,5 +1,3 @@
-/* Второй вариант интерфейса (практическое задание 16).
-   Общий стиль для index-alt.html, projects-alt.html, project-card-alt.html */
 * {
   box-sizing: border-box;
 }
@@ -17,6 +15,7 @@ body {
   margin: 0 auto;
   background: #f5f6f8;
 }
+
 
 .page-header {
   background: #2563eb;
@@ -62,7 +61,7 @@ body {
   align-items: flex-start;
 }
 .sidebar {
-  flex: 0 1 260px;
+  flex: 0 0 260px; 
   background: #dbeafe;
   padding: 15px;
 }
@@ -81,80 +80,6 @@ body {
   margin-top: 16px;
 }
 
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.section-heading h3 {
-  margin: 0;
-}
-.section-heading .btn {
-  flex-shrink: 0;
-}
-
-.project-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 12px 0 16px;
-}
-
-.toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 12px;
-  margin: 20px 0 12px;
-  padding: 14px;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-}
-.toolbar label {
-  font-weight: bold;
-  color: #374151;
-}
-.toolbar__group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.toolbar input[type="search"],
-.toolbar select {
-  min-height: 38px;
-  padding: 8px 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  background: #ffffff;
-  color: #111827;
-  font: inherit;
-}
-.toolbar input[type="search"] {
-  flex: 1 1 220px;
-  min-width: 180px;
-}
-.toolbar select {
-  flex: 0 1 145px;
-  min-width: 130px;
-}
-.toolbar .btn {
-  white-space: nowrap;
-}
-.summary {
-  grid-column: 1 / -1; /* блок занимает обе колонки сетки */
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 24px;
-}
-.summary h3 {
-  margin-top: 0;
-}
 
 .project-card,
 .info-block {
@@ -173,30 +98,6 @@ body {
   margin: 0 0 12px;
 }
 
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
-}
-.project-list .project-card {
-  margin-bottom: 0;
-}
-.project-card-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-.project-card-link:hover,
-.project-card-link:focus-visible {
-  border-color: #2563eb;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
-}
-.project-card-link:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
-}
-
 .task-item {
   background: #f9fafb;
   border: 1px solid #d1d5db;
@@ -210,20 +111,6 @@ body {
   margin-bottom: 0;
 }
 
-.task-list .badge {
-  position: static;
-}
-
-.task__status {
-  border: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-.task--overdue {
-  border-color: #dc2626;
-}
-
 .more-link {
   margin: 0 0 15px;
 }
@@ -234,10 +121,10 @@ body {
   gap: 20px;
 }
 .projects-grid .project-card {
-  margin-bottom: 0;
+  margin-bottom: 0; 
 }
 .projects-grid .project-card h3 {
-  padding-right: 90px;
+  padding-right: 90px; 
 }
 
 /* Практическое задание 15: значок статуса в правом верхнем углу карточки */
@@ -261,12 +148,6 @@ body {
   background: #6b7280;
 }
 
-.empty {
-  padding: 30px;
-  text-align: center;
-  color: #6b7280;
-}
-
 .btn {
   display: inline-block;
   padding: 10px 16px;
@@ -288,35 +169,13 @@ body {
   background: #4b5563;
 }
 
+/* Практическое задание 15: модальное окно «Создание проекта».
+   Открывается переходом на #create-project (псевдокласс :target), закрывается ссылкой #close.
+   Подложка (fixed, z-index 100) закрывает всё окно браузера,
+   окно (fixed, z-index 101) расположено над ней. */
 .modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
+  display: none;
 }
-
-.modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-.modal__window {
-  position: relative;
-  max-width: 520px;
-  margin: 60px auto;
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 25px;
-}
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
 .modal:target {
   display: block;
 }
@@ -343,19 +202,6 @@ body {
 .modal-window h2 {
   margin: 0 0 20px;
 }
-
-.errors {
-  background: #fee2e2;
-  border: 1px solid #dc2626;
-  color: #991b1b;
-  padding: 10px 20px;
-  border-radius: 6px;
-  margin-bottom: 15px;
-}
-.hidden {
-  display: none;
-}
-
 .form-group {
   margin-bottom: 16px;
 }
@@ -421,7 +267,7 @@ body {
   margin: 0 0 16px;
 }
 .project-aside {
-  flex: 0 1 280px;
+  flex: 0 0 280px;
   position: sticky;
   top: calc(var(--nav-height) + 16px); /* ниже закреплённой навигации */
   background: #ffffff;
@@ -437,97 +283,10 @@ body {
 .project-aside p:last-child {
   margin-bottom: 0;
 }
-.project-aside .badge {
-  position: static;
-  vertical-align: middle;
-}
+
 
 .project-main section {
   scroll-margin-top: calc(var(--nav-height) + 16px);
-}
-
-.output-panel {
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 24px;
-}
-.output-panel h3 {
-  margin-top: 0;
-}
-#output p {
-  margin: 4px 0;
-}
-
-.output-panel .badge {
-  position: static;
-}
-
-.progress {
-  height: 10px;
-  background: #e5e7eb;
-  border-radius: 5px;
-  margin: 10px 0;
-  overflow: hidden;
-}
-.progress__bar {
-  height: 100%;
-  background: #2563eb;
-  transition: width 0.2s ease;
-}
-
-.badge {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #ffffff;
-}
-.badge--new {
-  background: #6b7280;
-}
-.badge--in-progress {
-  background: #2563eb;
-}
-.badge--done {
-  background: #16a34a;
-}
-.overdue {
-  color: #dc2626;
-  font-weight: bold;
-}
-
-.projects-section {
-  margin-top: 24px;
-  overflow-x: auto;
-}
-.data-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: #ffffff;
-}
-.data-table th,
-.data-table td {
-  border: 1px solid #d1d5db;
-  padding: 8px 12px;
-  text-align: left;
-  vertical-align: middle;
-}
-.data-table thead th {
-  background: #eef2f7;
-}
-.data-table .progress {
-  display: inline-block;
-  width: min(120px, 60%);
-  vertical-align: middle;
-}
-.data-table td small {
-  color: #6b7280;
-}
-.data-table .badge {
-  position: static;
 }
 
 .page-footer {
