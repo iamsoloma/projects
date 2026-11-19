@@ -297,3 +297,8 @@ body {
 .page-footer p {
   margin: 0;
 }
+
+.project-list { display: grid; gap: 20px;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.project-card { background: #ffffff; border: 1px solid #d1d5db;
+                border-radius: 8px; padding: 20px; }
