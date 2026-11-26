@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "CRM-система для отдела продаж",
+    "client": "ООО «Ромашка»",
+    "manager": "Иванов И.И.",
+    "status": "in-progress",
+    "startDate": "2026-03-01",
+    "endDate": "2026-11-30",
+    "tasksTotal": 12,
+    "tasksDone": 7
+  },
+  {
+    "id": 2,
+    "title": "Корпоративный портал",
+    "client": "АО «Вектор»",
+    "manager": "Петрова А.С.",
+    "status": "new",
+    "startDate": "2026-05-12",
+    "endDate": "2027-02-15",
+    "tasksTotal": 8,
+    "tasksDone": 0
+  },
+  {
+    "id": 3,
+    "title": "Мобильное приложение доставки",
+    "client": "ООО «Логистик»",
+    "manager": "Сидоров П.П.",
+    "status": "done",
+    "startDate": "2026-01-10",
+    "endDate": "2026-05-20",
+    "tasksTotal": 3,
+    "tasksDone": 3
+  }
+]

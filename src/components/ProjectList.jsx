@@ -7,7 +7,7 @@ export default function ProjectList({
   onDelete,
   onTaskStatusChange,
 }) {
-  if (projects.lenght === 0) {
+  if (projects.length === 0) {
     return (
       <p className="empty">Проекты не найдены. Измените условия отбора.</p>
     );
