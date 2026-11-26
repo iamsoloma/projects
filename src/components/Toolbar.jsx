@@ -6,7 +6,6 @@ export default function Toolbar({
 }) {
   return (
     <div className="toolbar">
-      i
       <input
         type="search"
         className="toolbar__search"

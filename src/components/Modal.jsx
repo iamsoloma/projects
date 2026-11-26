@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+
 export default function Modal({ title, onClose, children }) {
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div className="modal">
       <div className="modal__backdrop" onClick={onClose}></div>

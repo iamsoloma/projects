@@ -2,10 +2,8 @@ import ProjectCard from "./ProjectCard";
 
 export default function ProjectList({
   projects,
-  tasks,
   onStatusChange,
   onDelete,
-  onTaskStatusChange,
 }) {
   if (projects.length === 0) {
     return (
@@ -19,10 +17,8 @@ export default function ProjectList({
         <ProjectCard
           key={project.id}
           project={project}
-          tasks={tasks.filter((task) => task.projectId === project.id)}
           onStatusChange={onStatusChange}
           onDelete={onDelete}
-          onTaskStatusChange={onTaskStatusChange}
         />
       ))}
     </section>

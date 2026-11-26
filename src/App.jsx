@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
-import Toolbar from "./components/Toolbar.jsx";
-import ProjectList from "./components/ProjectList.jsx";
-import ProjectForm from "./components/ProjectForm.jsx";
-import Modal from "./components/Modal.jsx";
+import Navigation from "./components/Navigation.jsx";
+import Footer from "./components/Footer.jsx";
+import ProjectsPage from "./pages/ProjectsPage.jsx";
+import ProjectPage from "./pages/ProjectPage.jsx";
+import TasksPage from "./pages/TasksPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 const taskStatuses = ["new", "in-progress", "done"];
 
@@ -21,6 +24,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [isTasksLoading, setTasksLoading] = useState(true);
   const [tasksError, setTasksError] = useState(null);
+
+  // Состояния отбора размещены выше маршрутов: при возврате по кнопке
+  // «Назад» браузера введённые условия поиска и фильтрации сохраняются.
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("all");
 
@@ -75,74 +81,107 @@ export default function App() {
   const visibleProjects = projects
     .filter((p) => status === "all" || p.status === status)
     .filter((p) => p.title.toLowerCase().includes(query.trim().toLowerCase()));
-  function handleCreate(project) {
-    setProjects([...projects, project]);
-    setModalOpen(false);
+
+  // Пересчёт индикатора готовности проектов по текущему списку задач
+  function recalcProgress(currentProjects, currentTasks) {
+    return currentProjects.map((project) => {
+      const projectTasks = currentTasks.filter(
+        (t) => t.projectId === project.id,
+      );
+      return {
+        ...project,
+        tasksTotal: projectTasks.length,
+        tasksDone: projectTasks.filter((t) => t.status === "done").length,
+      };
+    });
   }
+
+  function handleCreate(project) {
+    setProjects((current) => [...current, project]);
+  }
+
   function handleDelete(id) {
     setProjects(projects.filter((p) => p.id !== id));
   }
-  function handleStatusChange(id, status) {
-    setProjects(projects.map((p) => (p.id === id ? { ...p, status } : p)));
-  }
-  function handleTaskStatusChange(id) {
-    setTasks((currentTasks) =>
-      currentTasks.map((task) => {
-        if (task.id !== id) return task;
-        const currentIndex = taskStatuses.indexOf(task.status);
-        const nextStatus =
-          taskStatuses[(currentIndex + 1) % taskStatuses.length];
-        return { ...task, status: nextStatus };
-      }),
+
+  function handleProjectStatusChange(id, nextStatus) {
+    setProjects(
+      projects.map((p) => (p.id === id ? { ...p, status: nextStatus } : p)),
     );
   }
-  const [isModalOpen, setModalOpen] = useState(false);
+
+  function handleTaskStatusChange(id) {
+    const nextTasks = tasks.map((task) => {
+      if (task.id !== id) return task;
+      const currentIndex = taskStatuses.indexOf(task.status);
+      const nextStatus =
+        taskStatuses[(currentIndex + 1) % taskStatuses.length];
+      return { ...task, status: nextStatus };
+    });
+    setTasks(nextTasks);
+    setProjects(recalcProgress(projects, nextTasks));
+  }
+
+  function handleTaskDelete(id) {
+    const nextTasks = tasks.filter((task) => task.id !== id);
+    setTasks(nextTasks);
+    setProjects(recalcProgress(projects, nextTasks));
+  }
+
   return (
-    <div className="app">
-      <Header />
-      <main className="content">
-        <button onClick={() => setModalOpen(true)}>Создать проект</button>
-        {isModalOpen && (
-          <Modal title="Новый проект" onClose={() => setModalOpen(false)}>
-            <ProjectForm onCreate={handleCreate} />
-          </Modal>
-        )}
-        <h2>
-          Проекты ({visibleProjects.length} из {projects.length})
-        </h2>
-        <Toolbar
-          query={query}
-          status={status}
-          onQueryChange={setQuery}
-          onStatusChange={setStatus}
-        />
-        {isLoading && <p className="loading">Загрузка проектов...</p>}
-        {error && (
-          <p className="error">
-            Не удалось загрузить данные. Обновите страницу.
-          </p>
-        )}
-        {isTasksLoading && !isLoading && <p className="loading">Загрузка задач...</p>}
-        {tasksError && (
-          <p className="error">
-            Не удалось загрузить задачи. Обновите страницу.
-          </p>
-        )}
-        {!isLoading && !error && visibleProjects.length === 0 && (
-          <p className="empty">
-            Проекты не найдены. Измените условия отбора.
-          </p>
-        )}
-        {!isLoading && !error && visibleProjects.length > 0 && (
-          <ProjectList
-            projects={visibleProjects}
-            tasks={tasks}
-            onDelete={handleDelete}
-            onStatusChange={handleStatusChange}
-            onTaskStatusChange={handleTaskStatusChange}
-          />
-        )}
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Header />
+        <Navigation />
+        <main className="content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProjectsPage
+                  projects={projects}
+                  visibleProjects={visibleProjects}
+                  isLoading={isLoading}
+                  error={error}
+                  query={query}
+                  status={status}
+                  onQueryChange={setQuery}
+                  onStatusChange={setStatus}
+                  onCreate={handleCreate}
+                  onDelete={handleDelete}
+                  onProjectStatusChange={handleProjectStatusChange}
+                />
+              }
+            />
+            <Route
+              path="/projects/:id"
+              element={
+                <ProjectPage
+                  projects={projects}
+                  tasks={tasks}
+                  onTaskStatusChange={handleTaskStatusChange}
+                  onTaskDelete={handleTaskDelete}
+                />
+              }
+            />
+            <Route
+              path="/tasks"
+              element={
+                <TasksPage
+                  tasks={tasks}
+                  projects={projects}
+                  isTasksLoading={isTasksLoading}
+                  tasksError={tasksError}
+                  onTaskStatusChange={handleTaskStatusChange}
+                  onTaskDelete={handleTaskDelete}
+                />
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
